@@ -1,0 +1,36 @@
+<div class="container mt-5">
+    <button class="btn btn-success" (click)="onAddContact()">New Contact</button>
+  
+    <table class="table mt-3">
+      <thead>
+        <tr>
+          <th>#</th>
+          <th>First Name</th>
+          <th>Last Name</th>
+          <th>Email</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let contact of contacts">
+          <td>{{ contact.id }}</td>
+          <td>{{ contact.firstName }}</td>
+          <td>{{ contact.lastName }}</td>
+          <td>{{ contact.email }}</td>
+          <td>
+            <button class="btn btn-warning" (click)="onEditContact(contact)">Edit</button>
+            <button class="btn btn-danger" (click)="onDeleteContact(contact.id)">Delete</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  
+    <!-- Modal for adding/editing contacts -->
+    <app-contact-form
+      *ngIf="showModal"
+      [contact]="selectedContact"
+      (closeModal)="onCloseModal()"
+      (saveContact)="onSaveContact($event)">
+    </app-contact-form>
+  </div>
+  

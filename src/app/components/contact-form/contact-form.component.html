@@ -1,0 +1,33 @@
+<div class="modal" tabindex="-1" style="display: block; background: rgba(0, 0, 0, 0.5)">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">{{ isEditMode ? 'Edit' : 'Add' }} Contact</h5>
+          <button type="button" class="btn-close" (click)="onClose()"></button>
+        </div>
+        <div class="modal-body">
+          <form [formGroup]="contactForm" (ngSubmit)="onSubmit()">
+            <div class="mb-3">
+              <label for="firstName" class="form-label">First Name</label>
+              <input id="firstName" formControlName="firstName" class="form-control" required />
+            </div>
+  
+            <div class="mb-3">
+              <label for="lastName" class="form-label">Last Name</label>
+              <input id="lastName" formControlName="lastName" class="form-control" required />
+            </div>
+  
+            <div class="mb-3">
+              <label for="email" class="form-label">Email</label>
+              <input id="email" formControlName="email" class="form-control" type="email" required />
+            </div>
+  
+            <button type="submit" class="btn btn-primary" [disabled]="contactForm.invalid">
+              {{ isEditMode ? 'Update' : 'Add' }} Contact
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+  
